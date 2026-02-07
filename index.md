@@ -73,7 +73,7 @@ layout: base.liquid
   {% if olderPostsCount > 0 %}
   <div style="text-align: center; margin: 2rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 0.5rem;">
     <p style="margin: 0; color: #666;">
-      📚 <strong>{{ olderPostsCount }}</strong> older experiment{{ olderPostsCount | pluralize: 's' }} available in the 
+      📚 <strong>{{ olderPostsCount }}</strong> older experiment{% if olderPostsCount != 1 %}s{% endif %} available in the 
       <a href="/archive/" style="color: #667eea; font-weight: bold;">Archive</a>
     </p>
   </div>
