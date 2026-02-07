@@ -4,47 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} | Gross Experiments</title>
-  
-  <!-- Local Tailwind CSS -->
   <link rel="stylesheet" href="/css/tailwind.css">
-  
-  <!-- Custom SVG as favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%23ff6b6b' d='M50,20 Q70,15 80,30 Q90,45 85,65 Q80,85 60,85 Q40,85 30,70 Q20,55 25,35 Q30,15 50,20Z'/></svg>">
 </head>
 <body class="bg-gray-50 font-sans">
-  
-  <!-- Header -->
-  <header class="bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 text-white shadow-lg">
-    <div class="container mx-auto px-4 py-8">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <!-- Custom SVG Logo -->
-          <div class="w-12 h-12">
-            {% include "logo.svg" %}
-          </div>
-          <div>
-            <h1 class="text-3xl font-bold font-mono">Gross 144</h1>
-            <p class="text-gray-100">A tabloid for random texts & experiments</p>
-          </div>
-        </div>
-        <nav class="flex space-x-4">
-          <a href="/" class="hover:underline px-3 py-2 rounded-lg bg-white/20">Home</a>
-          <a href="https://github.com/yus/gross" target="_blank" class="hover:underline px-3 py-2 rounded-lg bg-white/20">GitHub</a>
-        </nav>
-      </div>
+  <header class="bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 text-white p-8">
+    <div class="container mx-auto">
+      <h1 class="text-4xl font-bold font-mono">Gross 144</h1>
+      <p class="text-xl opacity-90">A tabloid for random texts & experiments</p>
     </div>
   </header>
   
-  <main class="container mx-auto px-4 py-8">
+  <main class="container mx-auto p-8">
     {{ content | safe }}
   </main>
   
-  <footer class="border-t mt-12 py-8 bg-white">
-    <div class="container mx-auto px-4 text-center text-gray-600">
-      <p class="font-mono">
-        Built with 11ty + Tailwind • Deployed from GitHub • Updated {{ "now" | date: "%Y-%m-%d" }}
-      </p>
-    </div>
+  <footer class="border-t p-8 text-center text-gray-600">
+    <p class="font-mono">Built with 11ty v3 • Deployed from GitHub</p>
   </footer>
 </body>
 </html>
