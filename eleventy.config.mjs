@@ -22,6 +22,15 @@ export default function(eleventyConfig) {
     
     return Array.from(tags).sort();
   });
+
+  eleventyConfig.addFilter("olderThanYear", function(posts) {
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    
+    return posts.filter(post => {
+      return post.date <= oneYearAgo;
+    });
+  });
   
   return {
     dir: {
