@@ -18,9 +18,15 @@ layout: base.liquid
   <p>No posts found. Check if posts have <code>tags: ["posts"]</code> in frontmatter.</p>
 {% endif %}
 
-<!-- Posts -->
-{% if collections.posts %}
-  {% for post in collections.posts reversed %}
+<!-- Recent Posts (Current & Previous Year Only) -->
+{% assign currentYear = "now" | date: "%Y" | plus: 0 %}
+{% assign cutoffYear = currentYear | minus: 1 %}
+{% assign cutoffDate = cutoffYear | append: "-01-01" %}
+
+{% assign recentPosts = collections.posts | where_exp: "post", "post.date >= cutoffDate" %}
+
+{% if recentPosts.size > 0 %}
+  {% for post in recentPosts reversed %}
   <article class="gross-card" style="max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #ff6b6b;">
     <!-- Header -->
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
@@ -61,9 +67,24 @@ layout: base.liquid
     </div>
   </article>
   {% endfor %}
+  
+  <!-- Archive Link (if older posts exist) -->
+  {% assign olderPostsCount = collections.posts.size | minus: recentPosts.size %}
+  {% if olderPostsCount > 0 %}
+  <div style="text-align: center; margin: 2rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 0.5rem;">
+    <p style="margin: 0; color: #666;">
+      📚 <strong>{{ olderPostsCount }}</strong> older experiment{{ olderPostsCount | pluralize: 's' }} available in the 
+      <a href="/archive/" style="color: #667eea; font-weight: bold;">Archive</a>
+    </p>
+  </div>
+  {% endif %}
+  
 {% else %}
   <article style="text-align: center; padding: 3rem;">
-    <h3>No experiments yet!</h3>
-    <p>Create some markdown files in the `_posts` folder.</p>
+    <h3>No recent experiments!</h3>
+    <p>
+      Check the <a href="/archive/">Archive</a> for older posts, 
+      or create new markdown files in the `_posts` folder.
+    </p>
   </article>
 {% endif %}
