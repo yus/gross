@@ -99,18 +99,29 @@
     {{ content | safe }}
   </main>
 
-  {#
-  <!-- Footer -->
-  <footer class="container" style="text-align: center; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #eee;">
-    <p>
-      <small>
-        Built with 11ty + Pico CSS • 
-        <a href="https://github.com/yus/gross">View source</a> • 
-        Updated {{ "now" | date: "%Y-%m-%d" }}
-      </small>
+  <footer class="container" style="text-align: center; margin-top: 3rem; padding: 1.5rem 0; border-top: 1px solid #eee; font-size: 0.8rem;">
+    <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 0.5rem;">
+      <span>
+        <strong style="color: #ff6b6b;">{{ collections.posts.size }}</strong> experiments
+      </span>
+      <span>
+        {% assign allTags = "" | split: "" %}
+        {% for post in collections.posts %}
+          {% for tag in post.data.tags %}
+            {% if tag != "posts" %}{% assign allTags = allTags | push: tag %}{% endif %}
+          {% endfor %}
+        {% endfor %}
+        <strong style="color: #667eea;">{{ allTags | uniq | size }}</strong> tags
+      </span>
+      <span>
+        <strong style="color: #764ba2;">144</strong> gross
+      </span>
+    </div>
+    
+    <p style="color: #666; margin: 0;">
+      Built with 11ty • Updated {{ "now" | date: "%Y-%m-%d" }}
     </p>
   </footer>
-  #}
 
   <script>
     // Theme toggle
