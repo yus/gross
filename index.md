@@ -44,9 +44,10 @@ layout: base.liquid
     <div style="margin: 1rem 0;">
       {% for tag in post.data.tags %}
         {% if tag != "posts" %}
-        <span style="display: inline-block; background: #f1f1f1; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-right: 0.5rem;">
+        <a href="/gross/tags/#{{ tag | slugify }}" 
+           style="display: inline-block; background: #f1f1f1; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-right: 0.5rem; color: #333; text-decoration: none;">
           #{{ tag }}
-        </span>
+        </a>
         {% endif %}
       {% endfor %}
     </div>
