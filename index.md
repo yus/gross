@@ -1,6 +1,6 @@
 ---
 title: "Gross 144"
-layout: base.njk
+layout: base.liquid
 ---
 
 <!-- Simple check -->
