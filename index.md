@@ -21,43 +21,44 @@ layout: base.liquid
 <!-- Posts -->
 {% if collections.posts %}
   {% for post in collections.posts reversed %}
-  <article class="gross-card">
-    <header>
-      <!-- DATE & READING TIME ROW - ADD THIS -->
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
-        <div>
-          <span style="margin-right: 0.5rem;">📅</span>
-          <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %d, %Y" }}</time>
-        </div>
-        <div>
-          <span style="margin-right: 0.5rem;">⏱️</span>
-          <span>~{{ post.templateContent | size | divided_by: 200 | round }} min read</span>
-        </div>
-      </div>
-      <!-- END DATE ROW -->
-      
-      <hgroup>
-        <h2 style="margin: 0;">
-          <a href="{{ post.url }}">{{ post.data.title }}</a>
-        </h2>
-      </hgroup>
-      
-      {% if post.data.tags %}
-      <div style="margin: 1rem 0;">
-        {% for tag in post.data.tags %}
-        <span class="gross-tag">#{{ tag }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </header>
-    
-    <div style="margin: 1.5rem 0;">
-      {{ post.templateContent | truncate: 300 }}
+  <article class="gross-card" style="max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #ff6b6b;">
+    <!-- Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+      <div>📅 {{ post.date | date: "%B %d, %Y" }}</div>
+      <div>⏱️ ~{{ post.templateContent | size | divided_by: 200 | round }} min</div>
     </div>
     
-    <footer>
-      <a href="{{ post.url | url }}">Read Full Post →</a>
-    </footer>
+    <!-- Title -->
+    <h2 style="margin-top: 0;">
+      <a href="{{ post.url | url }}" style="color: #333; text-decoration: none;">
+        {{ post.data.title }}
+      </a>
+    </h2>
+    
+    <!-- Tags -->
+    {% if post.data.tags %}
+    <div style="margin: 1rem 0;">
+      {% for tag in post.data.tags %}
+        {% if tag != "posts" %}
+        <span style="display: inline-block; background: #f1f1f1; padding: 0.25rem 0.75rem; border-radius: 1rem; font-size: 0.8rem; margin-right: 0.5rem;">
+          #{{ tag }}
+        </span>
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Content Preview (forces plain text) -->
+    <div style="color: #555; line-height: 1.6;">
+      {{ post.templateContent | strip_html | truncate: 200 }}
+    </div>
+    
+    <!-- Read More -->
+    <div style="margin-top: 1.5rem;">
+      <a href="{{ post.url | url }}" style="display: inline-block; background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 0.25rem; text-decoration: none;">
+        Read Full Experiment →
+      </a>
+    </div>
   </article>
   {% endfor %}
 {% else %}
