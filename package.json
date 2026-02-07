@@ -1,13 +1,13 @@
 {
   "name": "gross",
-  "version": "1.0.0",
+  "version": "1.0.0a",
   "scripts": {
     "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --minify",
     "build:eleventy": "eleventy",
     "build": "npm run build:css && npm run build:eleventy"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "@tailwindcss/typography": "^0.5.10",
     "tailwindcss": "^3.3.0"
   }
