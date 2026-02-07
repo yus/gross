@@ -1,0 +1,19 @@
+---
+title: "Experiment #1: GitHub-Only Workflow"
+date: 2024-01-15
+tags: ["github", "workflow", "experiment"]
+---
+
+## The Premise
+
+Can we build a complete website **without ever touching local dev environment**?
+
+### Findings:
+- ✅ GitHub Actions handles builds
+- ✅ GitHub Pages hosts for free  
+- ✅ GitHub Web IDE edits files
+- ❌ Missing: instant preview (but 1-min deploy is fine!)
+
+**Rating**: 9/10 grossness
+
+[View source](https://github.com/yus/gross)
