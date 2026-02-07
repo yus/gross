@@ -21,3 +21,7 @@ layout: base.njk
     </a>
   {% endfor %}
 </div>
+
+<p>Click any tag to see all posts with that tag.</p>
+
+<a href="/" role="button" style="margin-top: 2rem;">← Back to Home</a>
