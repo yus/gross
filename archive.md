@@ -31,4 +31,4 @@ layout: base.liquid
 </div>
 {% endfor %}
 
-<a href="/" role="button">← Back to Home</a>
+<a href="/gross/">← Back to Home</a>
