@@ -1,6 +1,6 @@
 ---
 title: "Tags Archive"
-layout: base.njk
+layout: base.liquid
 ---
 
 <h1>📚 All Tags</h1>
