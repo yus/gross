@@ -12,7 +12,6 @@ layout: base.njk
 <div class="grid md:grid-cols-2 gap-8 mb-12">
   {% for post in collections.posts reversed %}
   <article class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-8 border-pink-500 hover:border-purple-500 transform hover:-translate-y-1">
-    <!-- Date with icon -->
     <div class="flex items-center text-gray-500 mb-4 font-mono">
       <span class="mr-2">📅</span>
       <span>{{ post.date | date: "%B %d, %Y" }}</span>
@@ -27,9 +26,9 @@ layout: base.njk
     {% if post.data.tags %}
     <div class="mb-6">
       {% for tag in post.data.tags %}
-      <a href="#" class="inline-block px-4 py-2 text-sm bg-gradient-to-r from-gray-100 to-gray-200 rounded-full border border-gray-300 mr-3 mb-2 hover:from-pink-100 hover:to-pink-200 transition">
+      <span class="inline-block px-4 py-2 text-sm bg-gradient-to-r from-gray-100 to-gray-200 rounded-full border border-gray-300 mr-3 mb-2">
         #{{ tag }}
-      </a>
+      </span>
       {% endfor %}
     </div>
     {% endif %}
@@ -50,3 +49,41 @@ layout: base.njk
 {% else %}
 <p class="text-center text-gray-500 py-12">No posts yet.</p>
 {% endif %}
+
+<!-- STATS SECTION -->
+<div class="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-10 rounded-3xl mt-16 shadow-2xl">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div class="text-center">
+      <div class="text-5xl font-bold mb-2">{{ collections.posts.size }}</div>
+      <div class="text-gray-300">Experiments</div>
+    </div>
+    <div class="text-center">
+      <div class="text-5xl font-bold mb-2">
+        {% assign allTags = "" | split: "" %}
+        {% for post in collections.posts %}
+          {% for tag in post.data.tags %}
+            {% assign allTags = allTags | push: tag %}
+          {% endfor %}
+        {% endfor %}
+        {{ allTags | uniq | size }}
+      </div>
+      <div class="text-gray-300">Unique Tags</div>
+    </div>
+    <div class="text-center">
+      <div class="text-5xl font-bold mb-2">100%</div>
+      <div class="text-gray-300">GitHub Built</div>
+    </div>
+    <div class="text-center">
+      <div class="text-5xl font-bold mb-2">144</div>
+      <div class="text-gray-300">Gross Level</div>
+    </div>
+  </div>
+  
+  <div class="mt-10 text-center">
+    <p class="text-xl text-gray-300 mb-6">Built ENTIRELY on GitHub.com - no local tools!</p>
+    <a href="https://github.com/yus/gross" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 rounded-xl font-bold hover:bg-gray-100 transition">
+      <span>View Source on GitHub</span>
+      <span>→</span>
+    </a>
+  </div>
+</div>
