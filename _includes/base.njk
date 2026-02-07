@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <!-- Add SimpleCSS - looks great instantly! -->
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    /* Your custom styles */
+    :root {
+      --accent: #ff6b6b; /* Change accent color */
+    }
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 3rem 1rem;
+    }
+    .fun-button {
+      background: var(--accent);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{{ title }}</h1>
+    <nav>
+      <a href="/">Gross</a>
+      <a href="/about">144</a>
+      <a href="https://github.com/yus" target="_blank">GitHub</a>
+    </nav>
+  </header>
+  
+  <main>
+    {{ content | safe }}
+  </main>
+  
+  <footer>
+    <p>Gross built with 11ty on GitHub! 🚀</p>
+  </footer>
+</body>
+</html>
