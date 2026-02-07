@@ -56,7 +56,7 @@ layout: base.liquid
     </div>
     
     <footer>
-      <a href="{{ post.url }}" role="button">Read Full Experiment →</a>
+      <a href="{{ post.url | url }}" role="button">Read Full Post →</a>
     </footer>
   </article>
   {% endfor %}
