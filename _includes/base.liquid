@@ -26,16 +26,17 @@
     /* Gross header - NAVY with STATIC CRISPY DOTS */
     header {
       background: 
-        /* STATIC DOTS LAYER (no animation) */
-        radial-gradient(circle at 10px 10px, 
-          rgba(255, 255, 255, 0.15) 2px, 
-          transparent 2px
+        /* FIRST DOTS LAYER - tighter */
+        radial-gradient(circle at 3px 3px, 
+          rgba(255, 255, 255, 0.25) 1px, 
+          transparent 1px
         ),
-        radial-gradient(circle at 30px 30px, 
-          rgba(255, 255, 255, 0.15) 2px, 
-          transparent 2px
+        /* SECOND DOTS LAYER - offset */
+        radial-gradient(circle at 9px 9px, 
+          rgba(255, 255, 255, 0.15) 1px, 
+          transparent 1px
         ),
-        /* ANIMATED GRADIENT LAYER */
+        /* GRADIENT */
         linear-gradient(
           135deg,
           #0f1b3d 0%,
@@ -46,13 +47,13 @@
         );
       
       background-size: 
-        20px 20px,  /* Dots grid: 2px dot + 18px gap = 20px */
-        20px 20px,  /* Second dots layer offset */
-        400% 400%;  /* Large gradient for smooth animation */
+        6px 6px,    /* TIGHT: 1px dot + 5px gap */
+        6px 6px,    /* Same grid */
+        300% 300%;  /* Gradient size */
       
       background-position: 
-        0 0,        /* First dots layer */
-        10px 10px,  /* Second dots layer offset */
+        0 0,        /* First dots */
+        3px 3px,    /* Offset second layer by half grid */
         0% 0%;      /* Gradient start */
       
       position: relative;
@@ -60,26 +61,10 @@
       animation: gradientShift 15s ease infinite;
     }
     
-    /* ANIMATE ONLY THE GRADIENT, NOT THE DOTS */
     @keyframes gradientShift {
-      0% {
-        background-position: 
-          0 0,        /* Dots stay fixed */
-          10px 10px,  /* Dots stay fixed */
-          0% 0%;      /* Gradient moves */
-      }
-      50% {
-        background-position: 
-          0 0,
-          10px 10px,
-          100% 100%;
-      }
-      100% {
-        background-position: 
-          0 0,
-          10px 10px,
-          0% 0%;
-      }
+      0% { background-position: 0 0, 3px 3px, 0% 0%; }
+      50% { background-position: 0 0, 3px 3px, 100% 100%; }
+      100% { background-position: 0 0, 3px 3px, 0% 0%; }
     }
     
     /* Make dots more CRISPY (smaller, sharper) */
