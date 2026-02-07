@@ -1,14 +1,12 @@
-// eleventy.config.mjs
 export default function(eleventyConfig) {
   // Copy CSS
   eleventyConfig.addPassthroughCopy("css");
   
-  // Posts collection
+  // Collections
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByTag("posts").reverse();
   });
   
-  // Tag list collection
   eleventyConfig.addCollection("tagList", function(collectionApi) {
     const tags = new Set();
     const posts = collectionApi.getFilteredByTag("posts");
@@ -24,18 +22,15 @@ export default function(eleventyConfig) {
     return Array.from(tags).sort();
   });
   
-  // v3: You can use async/await in config!
-  
   return {
     dir: {
       input: ".",
       output: "_site",
       includes: "_includes"
     },
-    // Template engine for markdown files
-    markdownTemplateEngine: "liquid",  // or "njk" or remove for default
-    
-    // Template engine for HTML files
-    htmlTemplateEngine: "njk"
+    // CRITICAL: Liquid for .md, Nunjucks only for layouts
+    markdownTemplateEngine: "liquid",
+    htmlTemplateEngine: "liquid",
+    dataTemplateEngine: "liquid"
   };
 };
