@@ -104,15 +104,19 @@
       <span>
         <strong style="color: #ff6b6b;">{{ collections.posts.size }}</strong> experiments
       </span>
+      
       <span>
-        {% assign allTags = "" | split: "" %}
+        {% set allTags = [] %}
         {% for post in collections.posts %}
           {% for tag in post.data.tags %}
-            {% if tag != "posts" %}{% assign allTags = allTags | push: tag %}{% endif %}
+            {% if tag != "posts" %}
+              {% set allTags = allTags.concat([tag]) %}
+            {% endif %}
           {% endfor %}
         {% endfor %}
-        <strong style="color: #667eea;">{{ allTags | uniq | size }}</strong> tags
+        <strong style="color: #667eea;">{{ allTags | unique | length }}</strong> tags
       </span>
+      
       <span>
         <strong style="color: #764ba2;">144</strong> gross
       </span>
