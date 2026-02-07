@@ -10,13 +10,79 @@
   
   <!-- Custom gross styles -->
   <style>
-    /* Gross header enhancement - NAVY BLUE with CRISPY DOTS */
-    header {
-      background: linear-gradient(135deg, #0f1b3d 0%, #1a3b7a 50%, #2a5298 100%);
-      position: relative;
-      overflow: hidden;
+    /* Gross accent colors - NAVY THEME */
+    [data-theme=light] {
+      --primary: #1a3b7a;               /* Navy blue */
+      --primary-hover: #0f2a5c;         /* Darker navy */
+      --primary-focus: rgba(26, 59, 122, 0.25);
     }
     
+    [data-theme=dark] {
+      --primary: #2a5298;               /* Brighter navy for dark mode */
+      --primary-hover: #1a3b7a;
+      --primary-focus: rgba(42, 82, 152, 0.3);
+    }
+    
+    /* Gross header - NAVY with STATIC CRISPY DOTS */
+    header {
+      background: 
+        /* STATIC DOTS LAYER (no animation) */
+        radial-gradient(circle at 10px 10px, 
+          rgba(255, 255, 255, 0.15) 2px, 
+          transparent 2px
+        ),
+        radial-gradient(circle at 30px 30px, 
+          rgba(255, 255, 255, 0.15) 2px, 
+          transparent 2px
+        ),
+        /* ANIMATED GRADIENT LAYER */
+        linear-gradient(
+          135deg,
+          #0f1b3d 0%,
+          #1a3b7a 25%,
+          #2a5298 50%,
+          #1a3b7a 75%,
+          #0f1b3d 100%
+        );
+      
+      background-size: 
+        20px 20px,  /* Dots grid: 2px dot + 18px gap = 20px */
+        20px 20px,  /* Second dots layer offset */
+        400% 400%;  /* Large gradient for smooth animation */
+      
+      background-position: 
+        0 0,        /* First dots layer */
+        10px 10px,  /* Second dots layer offset */
+        0% 0%;      /* Gradient start */
+      
+      position: relative;
+      overflow: hidden;
+      animation: gradientShift 15s ease infinite;
+    }
+    
+    /* ANIMATE ONLY THE GRADIENT, NOT THE DOTS */
+    @keyframes gradientShift {
+      0% {
+        background-position: 
+          0 0,        /* Dots stay fixed */
+          10px 10px,  /* Dots stay fixed */
+          0% 0%;      /* Gradient moves */
+      }
+      50% {
+        background-position: 
+          0 0,
+          10px 10px,
+          100% 100%;
+      }
+      100% {
+        background-position: 
+          0 0,
+          10px 10px,
+          0% 0%;
+      }
+    }
+    
+    /* Make dots more CRISPY (smaller, sharper) */
     header::before {
       content: '';
       position: absolute;
@@ -24,46 +90,41 @@
       left: 0;
       width: 100%;
       height: 100%;
-      /* CRISPY 5px DOTS with 20px spacing */
+      /* EXTRA CRISPY DOTS OVERLAY */
       background-image: 
-        radial-gradient(circle at 10px 10px, 
-          rgba(255, 255, 255, 0.15) 2.5px, 
-          transparent 2.5px
-        ),
-        radial-gradient(circle at 30px 30px, 
-          rgba(255, 255, 255, 0.15) 2.5px, 
-          transparent 2.5px
+        radial-gradient(circle at 5px 5px, 
+          rgba(255, 255, 255, 0.2) 1.5px, 
+          transparent 1.5px
         );
-      background-size: 20px 20px; /* 5px dot + 15px gap = 20px grid */
-      background-position: 0 0, 10px 10px; /* offset second layer */
-      animation: grossGrid 40s linear infinite;
+      background-size: 10px 10px; /* 1.5px dot + 8.5px gap = SUPER CRISPY */
+      pointer-events: none; /* Don't interfere with clicks */
     }
     
-    @keyframes grossGrid {
-      0% { 
-        background-position: 0 0, 10px 10px; 
-      }
-      100% { 
-        background-position: 100px 100px, 110px 110px; 
-      }
+    /* Text styling for dark background */
+    header h1 {
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      font-weight: 300;
+      letter-spacing: 1px;
     }
     
-    /* Make text stand out on dark background */
-    header h1,
-    header p,
-    header a {
-      color: white !important;
-      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    header p {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
     
-    /* Navigation contrast */
+    /* Navigation buttons */
     header nav a {
-      background: rgba(255, 255, 255, 0.15) !important;
-      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      background: rgba(255, 255, 255, 0.12) !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      color: white !important;
+      transition: all 0.2s ease;
     }
     
     header nav a:hover {
       background: rgba(255, 255, 255, 0.25) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     
     /* Gross card enhancements */
