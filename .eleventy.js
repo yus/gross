@@ -25,6 +25,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("posts", function(collectionApi) {
     return collectionApi.getFilteredByTag("posts").reverse();
   });
+
+  // Add filter to check if array contains value
+  eleventyConfig.addFilter("contains", function(array, value) {
+    return array && array.includes(value);
+  });
   
   // Create postsByTag collection
   eleventyConfig.addCollection("postsByTag", function(collectionApi) {
