@@ -3,46 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
-  <!-- Add SimpleCSS - looks great instantly! -->
-  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-  <style>
-    /* Your custom styles */
-    :root {
-      --accent: #ff6b6b; /* Change accent color */
-    }
-    header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 3rem 1rem;
-    }
-    .fun-button {
-      background: var(--accent);
-      color: white;
-      padding: 10px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 1rem;
-    }
-  </style>
+  <title>{{ title }} | Gross 144</title>
+  
+  <!-- Tailwind via plugin -->
+  <link rel="stylesheet" href="/css/tailwind.css">
+  
+  <!-- Our custom SVG as favicon too -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%23ff6b6b' d='M50,20 Q70,15 80,30 Q90,45 85,65 Q80,85 60,85 Q40,85 30,70 Q20,55 25,35 Q30,15 50,20Z'/></svg>">
 </head>
-<body>
-  <header>
-    <h1>{{ title }}</h1>
-    <nav>
-      <a href="/">Gross</a>
-      <a href="/about">144</a>
-      <a href="https://github.com/yus" target="_blank">GitHub</a>
-    </nav>
+<body class="bg-gray-50 font-sans">
+  
+  <!-- Header with custom SVG -->
+  <header class="gross-blob text-white shadow-lg">
+    <div class="container mx-auto px-4 py-8">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <!-- Custom SVG Logo -->
+          <div class="w-12 h-12">
+            {% include "logo.svg" %}
+          </div>
+          <div>
+            <h1 class="text-3xl font-bold font-mono">Gross 144</h1>
+            <p class="text-gray-100">A tabloid for random texts & experiments</p>
+          </div>
+        </div>
+        <nav class="flex space-x-4">
+          <a href="/" class="hover:underline px-3 py-2 rounded-lg bg-white/20">Home</a>
+          <a href="/archive" class="hover:underline px-3 py-2 rounded-lg bg-white/20">Archive</a>
+          <a href="https://github.com/yus/gross" target="_blank" class="hover:underline px-3 py-2 rounded-lg bg-white/20">GitHub</a>
+        </nav>
+      </div>
+    </div>
   </header>
   
-  <main>
+  <main class="container mx-auto px-4 py-8">
+    <!-- Tag cloud if on tag page -->
+    {% if tag %}
+    <div class="mb-8 p-6 bg-white rounded-xl shadow">
+      <h2 class="text-2xl font-bold mb-4">Tag: {{ tag }}</h2>
+      <div class="flex flex-wrap gap-2">
+        {% for tagName in collections.tagList %}
+        <a href="/tags/{{ tagName | slug }}/" 
+           class="tag-pill {% if tagName == tag %}bg-gross-pink text-white border-gross-pink{% else %}bg-gray-100 border-gray-300{% endif %}">
+          {{ tagName }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+    
     {{ content | safe }}
   </main>
   
-  <footer>
-    <p>Gross built with 11ty on GitHub! 🚀</p>
+  <!-- Tag cloud in footer -->
+  <footer class="border-t mt-12 py-8 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="mb-6">
+        <h3 class="font-mono text-lg mb-4">All Tags</h3>
+        <div class="flex flex-wrap gap-2">
+          {% for tag in collections.tagList %}
+          <a href="/tags/{{ tag | slug }}/" class="tag-pill bg-gray-100 border-gray-300">
+            {{ tag }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      <p class="text-center text-gray-600 font-mono">
+        Built with 11ty + Tailwind • Updated {{ "now" | date: "%Y-%m-%d" }}
+      </p>
+    </div>
   </footer>
 </body>
 </html>
