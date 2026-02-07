@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
   // Copy CSS to output
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("_site/css"); // Also copy from built location
   
   // Tag system
   eleventyConfig.addCollection("tagList", function(collectionApi) {
