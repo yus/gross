@@ -1,8 +1,3 @@
----
-title: "About 144"
-layout: base.njk
----
-
 # 🧪 About Gross 144 Project
 
 This is my **zero-local-setup** 11ty playground!
@@ -18,6 +13,6 @@ This is my **zero-local-setup** 11ty playground!
 - **GitHub Actions** - Auto-deploy
 - **GitHub Pages** - Hosting
 - **Markdown** - Content
-- **SimpleCSS** - Styling
+- **PicoCSS** - Styling
 
 [← Back home](/)
