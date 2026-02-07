@@ -59,6 +59,6 @@ module.exports = function(eleventyConfig) {
       includes: "_includes"
     },
     // Optional: Set markdown template engine to nunjucks for consistency
-    markdownTemplateEngine: "njk"
+    // markdownTemplateEngine: "njk"
   };
 };
