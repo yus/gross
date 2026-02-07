@@ -8,7 +8,9 @@ layout: base.liquid
 {% assign allTags = "" | split: "" %}
 {% for post in collections.posts %}
   {% for tag in post.data.tags %}
-    {% assign allTags = allTags | push: tag %}
+    {% if tag != "posts" %}
+      {% assign allTags = allTags | push: tag %}
+    {% endif %}
   {% endfor %}
 {% endfor %}
 
@@ -16,12 +18,12 @@ layout: base.liquid
 
 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 2rem 0;">
   {% for tag in uniqueTags %}
-    <a href="/tags/{{ tag | slugify }}/" class="gross-tag" style="font-size: 1.1rem; padding: 0.5rem 1rem;">
+    <span class="gross-tag" style="font-size: 1.1rem; padding: 0.5rem 1rem;">
       #{{ tag }}
-    </a>
+    </span>
   {% endfor %}
 </div>
 
 <p>Click any tag to see all posts with that tag.</p>
 
-<a href="/" role="button" style="margin-top: 2rem;">← Back to Home</a>
+<a href="/" role="button">← Back to Home</a>
