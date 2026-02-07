@@ -4,33 +4,44 @@ layout: base.njk
 ---
 
 <!-- Stats -->
-<div style="text-align: center; margin-bottom: 3rem;">
-  <h2>📊 Gross Stats</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0;">
-    <article style="padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-      <h3 style="margin: 0; font-size: 2.5rem; color: var(--gross-pink);">{{ collections.posts.size }}</h3>
-      <p style="margin: 0; color: #666;">Experiments</p>
-    </article>
-    <article style="padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-      <h3 style="margin: 0; font-size: 2.5rem; color: var(--gross-purple);">
-        {% assign allTags = "" | split: "" %}
-        {% for post in collections.posts %}
-          {% for tag in post.data.tags %}
-            {% assign allTags = allTags | push: tag %}
-          {% endfor %}
-        {% endfor %}
-        {{ allTags | uniq | size }}
-      </h3>
-      <p style="margin: 0; color: #666;">Unique Tags</p>
-    </article>
-    <article style="padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-      <h3 style="margin: 0; font-size: 2.5rem; color: var(--gross-blue);">100%</h3>
-      <p style="margin: 0; color: #666;">GitHub Built</p>
-    </article>
-    <article style="padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-      <h3 style="margin: 0; font-size: 2.5rem; color: #333;">144</h3>
-      <p style="margin: 0; color: #666;">Gross Level</p>
-    </article>
+<!-- Enhanced Stats -->
+<div style="text-align: center; margin: 3rem 0;">
+  <h2>📊 GROSS METRICS</h2>
+  <div class="grid" style="margin: 2rem 0;">
+    {% assign tagCount = "" | split: "" %}
+    {% for post in collections.posts %}
+      {% for tag in post.data.tags %}
+        {% assign tagCount = tagCount | push: tag %}
+      {% endfor %}
+    {% endfor %}
+    
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+      <article style="background: linear-gradient(135deg, #fff5f5, #fff); border: 2px solid #ff6b6b;">
+        <h3 style="font-size: 3rem; margin: 0; color: #ff6b6b;">{{ collections.posts.size }}</h3>
+        <p style="margin: 0; font-weight: bold;">EXPERIMENTS</p>
+      </article>
+      
+      <article style="background: linear-gradient(135deg, #f3f4ff, #fff); border: 2px solid #667eea;">
+        <h3 style="font-size: 3rem; margin: 0; color: #667eea;">{{ tagCount | uniq | size }}</h3>
+        <p style="margin: 0; font-weight: bold;">UNIQUE TAGS</p>
+      </article>
+      
+      <article style="background: linear-gradient(135deg, #faf5ff, #fff); border: 2px solid #764ba2;">
+        <h3 style="font-size: 3rem; margin: 0; color: #764ba2;">100%</h3>
+        <p style="margin: 0; font-weight: bold;">GITHUB BUILT</p>
+      </article>
+      
+      <article style="background: linear-gradient(135deg, #f0f0f0, #fff); border: 2px solid #333;">
+        <h3 style="font-size: 3rem; margin: 0; color: #333;">144</h3>
+        <p style="margin: 0; font-weight: bold;">GROSS LEVEL</p>
+      </article>
+    </div>
+    
+    <div style="margin-top: 2rem;">
+      <a href="https://github.com/yus/gross" target="_blank" role="button" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+        🔍 View Source on GitHub
+      </a>
+    </div>
   </div>
 </div>
 
