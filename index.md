@@ -3,44 +3,33 @@ title: "Gross 144"
 layout: base.njk
 ---
 
-<!-- Stats -->
-<!-- Enhanced Stats -->
-<div style="text-align: center; margin: 3rem 0;">
-  <h2>📊 GROSS METRICS</h2>
-  <div class="grid" style="margin: 2rem 0;">
-    {% assign tagCount = "" | split: "" %}
-    {% for post in collections.posts %}
-      {% for tag in post.data.tags %}
-        {% assign tagCount = tagCount | push: tag %}
-      {% endfor %}
-    {% endfor %}
-    
-    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-      <article style="background: linear-gradient(135deg, #fff5f5, #fff); border: 2px solid #ff6b6b;">
-        <h3 style="font-size: 3rem; margin: 0; color: #ff6b6b;">{{ collections.posts.size }}</h3>
-        <p style="margin: 0; font-weight: bold;">EXPERIMENTS</p>
-      </article>
-      
-      <article style="background: linear-gradient(135deg, #f3f4ff, #fff); border: 2px solid #667eea;">
-        <h3 style="font-size: 3rem; margin: 0; color: #667eea;">{{ tagCount | uniq | size }}</h3>
-        <p style="margin: 0; font-weight: bold;">UNIQUE TAGS</p>
-      </article>
-      
-      <article style="background: linear-gradient(135deg, #faf5ff, #fff); border: 2px solid #764ba2;">
-        <h3 style="font-size: 3rem; margin: 0; color: #764ba2;">100%</h3>
-        <p style="margin: 0; font-weight: bold;">GITHUB BUILT</p>
-      </article>
-      
-      <article style="background: linear-gradient(135deg, #f0f0f0, #fff); border: 2px solid #333;">
-        <h3 style="font-size: 3rem; margin: 0; color: #333;">144</h3>
-        <p style="margin: 0; font-weight: bold;">GROSS LEVEL</p>
-      </article>
+<!-- Smaller Stats -->
+<div style="text-align: center; margin: 2rem 0;">
+  <h3 style="font-size: 1rem; color: #666; margin-bottom: 1rem;">📊 GROSS METRICS</h3>
+  <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; max-width: 600px; margin: 0 auto;">
+    <div style="padding: 0.5rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #ff6b6b;">{{ collections.posts.size }}</div>
+      <div style="font-size: 0.8rem; color: #666;">Experiments</div>
     </div>
-    
-    <div style="margin-top: 2rem;">
-      <a href="https://github.com/yus/gross" target="_blank" role="button" style="background: linear-gradient(135deg, #667eea, #764ba2);">
-        🔍 View Source on GitHub
-      </a>
+    <div style="padding: 0.5rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #667eea;">
+        {% assign allTags = "" | split: "" %}
+        {% for post in collections.posts %}
+          {% for tag in post.data.tags %}
+            {% assign allTags = allTags | push: tag %}
+          {% endfor %}
+        {% endfor %}
+        {{ allTags | uniq | size }}
+      </div>
+      <div style="font-size: 0.8rem; color: #666;">Tags</div>
+    </div>
+    <div style="padding: 0.5rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #764ba2;">100%</div>
+      <div style="font-size: 0.8rem; color: #666;">GitHub</div>
+    </div>
+    <div style="padding: 0.5rem;">
+      <div style="font-size: 1.5rem; font-weight: bold; color: #333;">144</div>
+      <div style="font-size: 0.8rem; color: #666;">Gross</div>
     </div>
   </div>
 </div>
