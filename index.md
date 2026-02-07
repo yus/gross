@@ -11,29 +11,39 @@ layout: base.njk
 {% if collections.posts %}
 <div class="grid md:grid-cols-2 gap-8 mb-12">
   {% for post in collections.posts reversed %}
-  <article class="bg-white p-6 rounded-xl shadow hover:shadow-xl transition-shadow border-l-4 border-pink-500">
-    <div class="text-sm text-gray-500 mb-2 font-mono">{{ post.date | date: "%B %d, %Y" }}</div>
-    <h2 class="text-2xl font-bold mb-3">
-      <a href="{{ post.url }}" class="text-purple-600 hover:text-pink-500">{{ post.data.title }}</a>
+  <article class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border-l-8 border-pink-500 hover:border-purple-500 transform hover:-translate-y-1">
+    <!-- Date with icon -->
+    <div class="flex items-center text-gray-500 mb-4 font-mono">
+      <span class="mr-2">📅</span>
+      <span>{{ post.date | date: "%B %d, %Y" }}</span>
+    </div>
+    
+    <h2 class="text-3xl font-bold mb-4">
+      <a href="{{ post.url }}" class="text-gray-800 hover:text-pink-500 transition">
+        {{ post.data.title }}
+      </a>
     </h2>
     
     {% if post.data.tags %}
-    <div class="mb-4">
+    <div class="mb-6">
       {% for tag in post.data.tags %}
-      <span class="inline-block px-3 py-1 text-sm bg-gray-100 rounded-full border mr-2">
-        {{ tag }}
-      </span>
+      <a href="#" class="inline-block px-4 py-2 text-sm bg-gradient-to-r from-gray-100 to-gray-200 rounded-full border border-gray-300 mr-3 mb-2 hover:from-pink-100 hover:to-pink-200 transition">
+        #{{ tag }}
+      </a>
       {% endfor %}
     </div>
     {% endif %}
     
-    <div class="prose prose-lg">
-      {{ post.templateContent }}
+    <div class="prose prose-lg prose-headings:text-gray-800 prose-a:text-blue-500 max-w-none mb-6">
+      {{ post.templateContent | truncate: 250 }}
     </div>
     
-    <a href="{{ post.url }}" class="mt-4 inline-block text-blue-500 font-bold hover:underline">
-      Read full experiment →
-    </a>
+    <div class="flex justify-between items-center pt-6 border-t">
+      <a href="{{ post.url }}" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white rounded-lg font-bold hover:from-blue-600 hover:to-purple-600 transition">
+        Read Experiment →
+      </a>
+      <span class="text-gray-400 text-sm">~{{ post.templateContent | size | divided_by: 200 | round }} min read</span>
+    </div>
   </article>
   {% endfor %}
 </div>
