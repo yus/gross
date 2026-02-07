@@ -1,5 +1,6 @@
 module.exports = function(eleventyConfig) {
-  // No plugin needed! Just passthrough CSS
+  // Copy CSS to output
+  eleventyConfig.addPassthroughCopy("css");
   
   // Tag system
   eleventyConfig.addCollection("tagList", function(collectionApi) {
