@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom gross styles */
-.gross-blob {
-  @apply bg-gradient-to-br from-gross-blue via-gross-purple to-gross-pink;
-}
-
-.tag-pill {
-  @apply inline-block px-3 py-1 text-sm font-mono rounded-full border-2;
+@layer components {
+  .tag-pill {
+    @apply inline-block px-3 py-1 text-sm font-mono rounded-full border-2;
+  }
+  .gross-blob {
+    @apply bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500;
+  }
 }
