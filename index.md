@@ -30,7 +30,7 @@ layout: base.njk
     {% endif %}
     
     <div class="prose prose-lg">
-      {{ post.templateContent | safe | truncate(200) }}
+      {{ post.templateContent | safe | truncate: 200 }}
     </div>
     
     <a href="{{ post.url }}" class="mt-4 inline-block text-blue-500 font-bold hover:underline">
