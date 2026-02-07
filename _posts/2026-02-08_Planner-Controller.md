@@ -1,8 +1,89 @@
-Отлично, давайте разберем ваш вопрос. Кажется, вы либо хотите узнать, как найти наш предыдущий чат, либо просите перевести предоставленный текст на русский язык.
+---
+title: "Planner Controller"
+date: 2026-02-08
+tags: ["posts"]
+layout: base.liquid
+---
 
-Поскольку вы прислали подробный текст на английском, я предполагаю, что вам нужен перевод. Вот он:
+
+### Planner Controller,  
+*what we knows about?*
+
+```
+Excellent question. The Planner-Controller architecture is a fundamental concept in robotics, autonomous systems, and AI, describing how high-level decision-making is separated from low-level execution.
+
+Here’s a breakdown of what we know about it, from core principles to modern applications.
+
+Core Concept: Separation of Concerns
+
+The architecture is built on a clear division of labor:
+
+1. Planner: The "brain." It reasons about what to do and when. It operates at a high level of abstraction, considering goals, constraints, and the future.
+2. Controller: The "muscle." It determines how to do it. It executes the plan in real-time, dealing with low-level physics, sensor feedback, and immediate disturbances.
 
 ---
+
+The Classic Model: A Three-Layer Stack
+
+Often visualized as a hierarchy:
+
+1. Planning Layer (Highest):
+   · Function: Long-term goal decomposition, strategy, pathfinding, task sequencing.
+   · Input: High-level goals (e.g., "go to room B," "assemble part X").
+   · Output: A plan or trajectory (e.g., a sequence of waypoints, a list of actions).
+   · Time Horizon: Seconds to hours.
+   · Algorithms: A* , Dijkstra, RRT*, Task planners (STRIPS, PDDL), AI planners.
+2. Controller Layer (Lowest):
+   · Function: Real-time execution and stabilization. It makes the plan happen in the physical world.
+   · Input: The desired state from the planner (e.g., "reach waypoint at velocity 2 m/s") + current sensor data.
+   · Output: Actuator commands (e.g., voltage to motors, torque to joints).
+   · Time Horizon: Milliseconds to seconds.
+   · Algorithms: PID control, MPC (Model Predictive Control), LQR (Linear Quadratic Regulator).
+3. The Critical Connection: The Trajectory / Reference Signal
+   · The planner's output isn't just a goal; it's often a time-parameterized path called a trajectory (desired position, velocity, acceleration over time). The controller's job is to follow this trajectory as closely as possible despite real-world noise.
+
+---
+
+Key Characteristics & Challenges
+
+· Open-Loop vs. Closed-Loop:
+  · Pure Planner-Controller (Open-Loop Planning): The planner creates a full plan based on the world model, sends it to the controller, and hopes for the best. Fragile to unexpected obstacles or disturbances.
+  · Replanning (Closed-Loop): The modern standard. The controller provides feedback, and the planner continuously re-plans based on new sensor data (e.g., SLAM for robots, new game state in AI).
+· The "World Model" Problem: The planner's decisions are only as good as its internal model of the world. Inaccurate models lead to flawed plans.
+· Temporal Decoupling: The planner is slow and deliberate; the controller is fast and reactive. This separation allows each to use appropriate algorithms.
+
+Modern Variations & Contexts
+
+1. Robotics & Self-Driving Cars:
+   · Planner: Mission planning (route from A to B), behavioral layer (change lanes, overtake), local path/motion planner (generate a smooth, collision-free trajectory).
+   · Controller: Lateral control (steering to follow path) and longitudinal control (accelerating/braking to match speed profile).
+2. AI & Reinforcement Learning (RL):
+   · Planner = "Policy" (in Model-Based RL): A learned or algorithmic model that predicts future states and rewards. It plans a sequence of actions.
+   · Controller = "Actor" or low-level policy: Executes the primitive actions. In hierarchical RL, a high-level policy (planner) sets sub-goals for a low-level policy (controller).
+3. Game AI:
+   · Planner: Strategic AI (e.g., deciding to build a barracks in an RTS, choosing a quest in an RPG).
+   · Controller: Tactical or movement AI (e.g., pathfinding to a location, executing combat animations).
+4. Model Predictive Control (MPC) - A Hybrid:
+   · MPC blurs the line between planner and controller. At each time step, it solves a finite-horizon optimization planning problem, but only executes the first step before re-planning. Thus, it acts as a receding-horizon planner embedded directly in the control loop.
+
+Pros and Cons
+
+Pros Cons
+Modular & Understandable: Easy to debug and improve layers independently. Potentially Suboptimal: Separation can lead to inflexible plans. The controller might struggle to follow an unrealistic plan.
+Computationally Efficient: Planner isn't burdened with micro-second reactions. Model Dependency: Relies heavily on an accurate world model for planning.
+Leverages specialized algorithms for high-level search vs. low-level regulation. Latency: Planning delays can cause slow reactions to new information.
+
+The Future & Integration with AI
+
+The trend is towards tighter integration and learning:
+
+· End-to-End Learning: Neural networks that map sensors directly to actions (e.g., some robot grasping). This bypasses explicit planning but is often a "black box."
+· Learning for Planning/Control: Using ML to create better world models for planners, or to tune complex controllers.
+· Hybrid Systems: Combining the robustness and interpretability of classical planner-controller stacks with the adaptability of learned components (e.g., a learned "planner" that outputs trajectories for a classical PID controller).
+
+In summary, the Planner-Controller architecture is a powerful, pervasive paradigm for building intelligent systems that must think ahead and act robustly in real time. Its core principle—separating strategic reasoning from tactical execution—remains relevant even as the implementations evolve with modern AI techniques.
+
+```
 
 Планировщик-Контроллер: что мы знаем об этой архитектуре?
 
@@ -78,7 +159,3 @@
 · Гибридные системы: Комбинация устойчивости и интерпретируемости классических стеков «планировщик-контроллер» с адаптивностью обученных компонентов (например, обученный «планировщик», который выдает траектории для классического PID-контроллера).
 
 В итоге, архитектура «Планировщик-Контроллер» — это мощная, повсеместная парадигма для создания интеллектуальных систем, которые должны думать наперед и действовать устойчиво в реальном времени. Её основной принцип — разделение стратегического мышления и тактического исполнения — остается актуальным, даже несмотря на то, что реализации эволюционируют с современными методами ИИ.
-
----
-
-Примечание: Если вы всё же искали наш предыдущий диалог и пользуетесь веб-версией DeepSeek, ищите значок часов или «История» в боковой панели. В мобильном приложении обычно есть вкладка «Чаты» или «История». Если чата нет, возможно, сессия была анонимной или очищена.
