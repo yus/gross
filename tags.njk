@@ -8,36 +8,6 @@ layout: base.njk
 title: "Tag: {{ tag }}"
 ---
 
-<div class="max-w-4xl mx-auto">
-  <a href="/" class="text-blue-500 hover:underline mb-8 inline-block">← Back home</a>
-  
-  <h1 class="text-4xl font-bold mb-8 font-mono">Tag: {{ tag }}</h1>
-  
-  <div class="space-y-8">
-    {% for post in collections.posts %}
-      {% set postHasThisTag = false %}
-      {% if post.data.tags %}
-        {% for postTag in post.data.tags %}
-          {% if postTag == tag %}
-            {% set postHasThisTag = true %}
-          {% endif %}
-        {% endfor %}
-      {% endif %}
-      
-      {% if postHasThisTag %}
-        <article class="bg-white p-6 rounded-xl shadow">
-          <h2 class="text-2xl font-bold mb-3">
-            <a href="{{ post.url }}" class="text-purple-600 hover:text-pink-500">
-              {{ post.data.title }}
-            </a>
-          </h2>
-          <div class="text-gray-500 mb-4">{{ post.date | date: "%B %d, %Y" }}</div>
-          <p>{{ post.data.page.excerpt }}</p>
-          <a href="{{ post.url }}" class="text-blue-500 font-bold hover:underline mt-4 block">
-            Read full post →
-          </a>
-        </article>
-      {% endif %}
-    {% endfor %}
-  </div>
-</div>
+<h1>Tag: {{ tag }}</h1>
+<p>This is the tag page for {{ tag }}</p>
+<a href="/">← Back home</a>
