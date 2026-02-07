@@ -99,15 +99,20 @@
   <main class="container">
     {{ content | safe }}
   </main>
-  
+
+  {#
   <!-- Footer -->
   <footer class="container" style="text-align: center; margin-top: 4rem; padding: 2rem 0; border-top: 1px solid #eee;">
     <p>
       <small>
-        Built with 11ty + Pico CSS • <a href="https://github.com/yus/gross">View source</a> • Updated {{ "now" | date: "%Y-%m-%d" }}
+        Built with 11ty + Pico CSS • 
+        <a href="https://github.com/yus/gross">View source</a> • 
+        Updated {{ "now" | date: "%Y-%m-%d" }}
       </small>
     </p>
   </footer>
+  #}
+
   <script>
     // Theme toggle
     function toggleTheme() {
