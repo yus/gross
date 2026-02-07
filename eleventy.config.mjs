@@ -29,7 +29,8 @@ export default function(eleventyConfig) {
       output: "_site",
       includes: "_includes"
     },
-    // CRITICAL: Liquid for .md, Nunjucks only for layouts
+    pathPrefix: "/gross/", 
+    // CRITICAL: Liquid for .md
     markdownTemplateEngine: "liquid",
     htmlTemplateEngine: "liquid",
     dataTemplateEngine: "liquid"
