@@ -42,6 +42,21 @@ layout: base.njk
 </div>
 #}
 
+<!-- Simple check -->
+{% if collections.posts and collections.posts.size > 0 %}
+  <p>Found {{ collections.posts.size }} posts ✓</p>
+  
+  {% for post in collections.posts reversed %}
+    <article class="gross-card">
+      <h2>{{ post.data.title }}</h2>
+      <p>{{ post.date | date: "%B %d, %Y" }}</p>
+      <div>{{ post.templateContent | truncate: 200 }}</div>
+    </article>
+  {% endfor %}
+{% else %}
+  <p>No posts found. Check if posts have <code>tags: ["posts"]</code> in frontmatter.</p>
+{% endif %}
+
 <!-- Posts -->
 {% if collections.posts %}
   {% for post in collections.posts reversed %}
