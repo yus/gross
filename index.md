@@ -34,6 +34,12 @@ layout: base.njk
   </div>
 </div>
 
+<!-- DEBUG: Posts Check -->
+<div style="background: #f5f5f5; padding: 1rem; margin: 1rem 0; border-radius: 0.5rem;">
+  <p>Total posts in collection: <strong>{{ collections.posts.size }}</strong></p>
+  <p>Collection exists: <strong>{{ collections.posts | json }}</strong></p>
+</div>
+
 <!-- Posts -->
 {% if collections.posts %}
   {% for post in collections.posts reversed %}
