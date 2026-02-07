@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom gross styles */
+.gross-blob {
+  @apply bg-gradient-to-br from-gross-blue via-gross-purple to-gross-pink;
+}
+
+.tag-pill {
+  @apply inline-block px-3 py-1 text-sm font-mono rounded-full border-2;
+}
