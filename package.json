@@ -1,12 +1,13 @@
 {
-  "name": "yus.github.io/gross",
+  "name": "gross",
   "version": "1.0.0",
   "scripts": {
     "build": "eleventy",
     "start": "eleventy --serve"
   },
   "devDependencies": {
-  "@11ty/eleventy": "^2.0.1",
-  "tailwindcss": "^3.3.0"
+    "@11ty/eleventy": "^2.0.1",
+    "@tailwindcss/typography": "^0.5.10",
+    "tailwindcss": "^3.3.0"
   }
 }
