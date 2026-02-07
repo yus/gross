@@ -3,17 +3,27 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("_site/css"); // Also copy from built location
   
-  // Tag system
+   // 1. Get all tags (excluding 'posts')
   eleventyConfig.addCollection("tagList", function(collectionApi) {
     let tagSet = new Set();
     collectionApi.getAll().forEach(item => {
       if ("tags" in item.data) {
         let tags = item.data.tags;
         if (typeof tags === "string") tags = [tags];
-        tags.forEach(tag => tagSet.add(tag));
+        
+        tags.forEach(tag => {
+          if (tag !== "posts") { // Skip the default 'posts' tag
+            tagSet.add(tag);
+          }
+        });
       }
     });
     return Array.from(tagSet).sort();
+  });
+
+  // 2. Create posts collection
+  eleventyConfig.addCollection("posts", function(collectionApi) {
+    return collectionApi.getFilteredByTag("posts").reverse();
   });
   
   // Create postsByTag collection
