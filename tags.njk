@@ -1,0 +1,14 @@
+---
+pagination:
+  data: collections.tagList
+  size: 1
+  alias: tag
+permalink: /tags/{{ tag | slug }}/
+layout: base.njk
+title: "Tag: {{ tag }}"
+---
+
+<h1>Tag: {{ tag }}</h1>
+<p>This is a test page for the {{ tag }} tag.</p>
+
+<a href="/">← Back home</a>
