@@ -1,2 +1,1 @@
-# rasforbidden.cf
-http://www.rasforbidden.cf/
+# Gross is a little tabloid
