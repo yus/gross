@@ -10,59 +10,55 @@
   
   <!-- Custom gross styles -->
   <style>
-    :root {
-      --gross-pink: #ff6b6b;
-      --gross-purple: #764ba2;
-      --gross-blue: #667eea;
+    /* Gross accent colors */
+    [data-theme=light] {
+      --primary: #ff6b6b;  /* Gross pink */
+      --primary-hover: #ff5252;
+      --primary-focus: rgba(255, 107, 107, 0.25);
     }
     
-    /* Gross header */
+    /* Gross header enhancement */
     header {
-      background: linear-gradient(135deg, var(--gross-blue), var(--gross-purple), var(--gross-pink));
-      color: white;
-      padding: 3rem 1rem;
-      margin-bottom: 3rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+      position: relative;
+      overflow: hidden;
     }
     
-    /* Gross cards */
+    header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: grossGrid 20s linear infinite;
+    }
+    
+    @keyframes grossGrid {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(20px, 20px); }
+    }
+    
+    /* Gross card enhancements */
     .gross-card {
-      background: white;
-      border-radius: 1rem;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-left: 8px solid var(--gross-pink);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      border-left: 8px solid var(--primary);
+      transition: all 0.3s ease;
+      position: relative;
     }
     
     .gross-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
     
-    /* Gross tags */
+    /* Gross tags styling */
     .gross-tag {
-      display: inline-block;
-      background: #f1f1f1;
-      padding: 0.25rem 1rem;
-      border-radius: 2rem;
-      font-size: 0.875rem;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #f1f1f1, #e1e1e1);
+      border: 1px solid #ddd;
       font-family: 'Courier New', monospace;
-    }
-    
-    /* Gross logo area */
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .logo-svg {
-      width: 64px;
-      height: 64px;
+      font-weight: bold;
     }
   </style>
 </head>
