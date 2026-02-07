@@ -15,6 +15,26 @@ module.exports = function(eleventyConfig) {
     return Array.from(tagSet).sort();
   });
   
+  // Create postsByTag collection
+  eleventyConfig.addCollection("postsByTag", function(collectionApi) {
+    const postsByTag = {};
+    const allPosts = collectionApi.getFilteredByTag("posts");
+    
+    allPosts.forEach(post => {
+      if (post.data.tags) {
+        const tags = Array.isArray(post.data.tags) ? post.data.tags : [post.data.tags];
+        tags.forEach(tag => {
+          if (tag !== "posts") { // Skip the "posts" tag itself
+            if (!postsByTag[tag]) postsByTag[tag] = [];
+            postsByTag[tag].push(post);
+          }
+        });
+      }
+    });
+    
+    return postsByTag;
+  });
+  
   return {
     dir: {
       input: ".",
