@@ -7,12 +7,30 @@
   <link rel="stylesheet" href="/css/tailwind.css">
 </head>
 <body class="bg-gray-50 font-sans">
-  <header class="bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 text-white p-8">
-    <div class="container mx-auto">
-      <h1 class="text-4xl font-bold font-mono">Gross 144</h1>
-      <p class="text-xl opacity-90">A tabloid for random texts & experiments</p>
+  <header class="bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 text-white p-8 relative overflow-hidden">
+  <!-- Animated background elements -->
+  <div class="absolute top-0 left-0 w-32 h-32 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-bounce"></div>
+  <div class="absolute bottom-0 right-0 w-32 h-32 bg-green-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-pulse"></div>
+  
+  <div class="container mx-auto relative z-10">
+    <div class="flex items-center gap-4 mb-4">
+      <!-- Your SVG logo -->
+      <div class="w-16 h-16">
+        {% include "img/Gr144.svg" %}
+      </div>
+      <div>
+        <h1 class="text-5xl font-bold font-mono tracking-tight">GROSS 144</h1>
+        <p class="text-xl opacity-90 mt-2">A tabloid for <span class="italic">digital experiments</span></p>
+      </div>
     </div>
-  </header>
+    
+    <nav class="flex gap-4 mt-6">
+      <a href="/" class="px-4 py-2 bg-white/20 rounded-lg hover:bg-white/30 transition">Home</a>
+      <a href="https://github.com/yus/gross" target="_blank" class="px-4 py-2 bg-white/20 rounded-lg hover:bg-white/30 transition">GitHub</a>
+      <a href="#" class="px-4 py-2 bg-white/20 rounded-lg hover:bg-white/30 transition">Archive</a>
+    </nav>
+  </div>
+</header>
   
   <main class="container mx-auto p-8">
     {{ content | safe }}
