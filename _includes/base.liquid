@@ -10,16 +10,9 @@
   
   <!-- Custom gross styles -->
   <style>
-    /* Gross accent colors */
-    [data-theme=light] {
-      --primary: #ff6b6b;  /* Gross pink */
-      --primary-hover: #ff5252;
-      --primary-focus: rgba(255, 107, 107, 0.25);
-    }
-    
-    /* Gross header enhancement */
+    /* Gross header enhancement - NAVY BLUE with CRISPY DOTS */
     header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+      background: linear-gradient(135deg, #0f1b3d 0%, #1a3b7a 50%, #2a5298 100%);
       position: relative;
       overflow: hidden;
     }
@@ -27,18 +20,50 @@
     header::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-      background-size: 20px 20px;
-      animation: grossGrid 20s linear infinite;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* CRISPY 5px DOTS with 20px spacing */
+      background-image: 
+        radial-gradient(circle at 10px 10px, 
+          rgba(255, 255, 255, 0.15) 2.5px, 
+          transparent 2.5px
+        ),
+        radial-gradient(circle at 30px 30px, 
+          rgba(255, 255, 255, 0.15) 2.5px, 
+          transparent 2.5px
+        );
+      background-size: 20px 20px; /* 5px dot + 15px gap = 20px grid */
+      background-position: 0 0, 10px 10px; /* offset second layer */
+      animation: grossGrid 40s linear infinite;
     }
     
     @keyframes grossGrid {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(20px, 20px); }
+      0% { 
+        background-position: 0 0, 10px 10px; 
+      }
+      100% { 
+        background-position: 100px 100px, 110px 110px; 
+      }
+    }
+    
+    /* Make text stand out on dark background */
+    header h1,
+    header p,
+    header a {
+      color: white !important;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Navigation contrast */
+    header nav a {
+      background: rgba(255, 255, 255, 0.15) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    header nav a:hover {
+      background: rgba(255, 255, 255, 0.25) !important;
     }
     
     /* Gross card enhancements */
