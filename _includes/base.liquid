@@ -81,14 +81,29 @@
         </div>
       </div>
       
-      <nav>
-        <ul>
-          <li><strong>Gross 144</strong></li>
-        </ul>
-        <ul>
-          <li><a href="{{ '' | url }}">Home</a></li>
-          <li><a href="{{ 'archive/' | url }}">Archive</a></li>
-          <li><a href="{{ 'tags/' | url }}">Tags</a></li>
+      <nav style="position: relative; z-index: 10;">
+        <ul style="display: flex; gap: 1rem; list-style: none; padding: 0; margin: 0;">
+          <li style="position: relative;">
+            <a href="" 
+               style="display: inline-block; padding: 0.5rem 1rem; color: white; text-decoration: none; 
+                      position: relative; z-index: 11;">
+              Home
+            </a>
+          </li>
+          <li style="position: relative;">
+            <a href="archive/" 
+               style="display: inline-block; padding: 0.5rem 1rem; color: white; text-decoration: none;
+                      position: relative; z-index: 11;">
+              Archive
+            </a>
+          </li>
+          <li style="position: relative;">
+            <a href="tags/" 
+               style="display: inline-block; padding: 0.5rem 1rem; color: white; text-decoration: none;
+                      position: relative; z-index: 11;">
+              Tags
+            </a>
+          </li>
         </ul>
       </nav>
     </div>
