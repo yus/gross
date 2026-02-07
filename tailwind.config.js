@@ -8,9 +8,6 @@ module.exports = {
           purple: '#764ba2',
           blue: '#667eea'
         }
-      },
-      fontFamily: {
-        'mono': ['"Courier New"', 'monospace']
       }
     }
   },
