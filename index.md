@@ -27,16 +27,14 @@ layout: base.liquid
 
 {% if recentPosts.size > 0 %}
   {% for post in recentPosts reversed %}
-  <article class="gross-card" style="max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #ff6b6b;">
-    <!-- Header -->
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
-      <div>📅 {{ post.date | date: "%B %d, %Y" }}</div>
-      <div>⏱️ ~{{ post.templateContent | size | divided_by: 200 | round }} min</div>
-    </div>
+  <article 
+    class="gross-card" 
+    style="max-width: 800px; margin: 0 auto 2rem; padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #ff6b6b; cursor: pointer;"
+    onclick="window.location='{{ post.url | url }}'">
     
     <!-- Title -->
     <h2 style="margin-top: 0;">
-      <a href="{{ post.url | url }}" style="color: #333; text-decoration: none;">
+      <a href="{{ post.url | url }}" style="color: #333; text-decoration: none; display: block;">
         {{ post.data.title }}
       </a>
     </h2>
