@@ -78,6 +78,16 @@ layout: base.njk
       <div class="text-gray-300">Gross Level</div>
     </div>
   </div>
+
+  <!-- CSS Test -->
+  <div class="p-4 mb-8">
+    <div class="bg-gradient-to-r from-pink-500 to-purple-500 p-4 rounded-lg text-white">
+      <p>✅ Tailwind gradient test - if colored, CSS works</p>
+    </div>
+    <p class="mt-4">
+      CSS file: <a href="/css/tailwind.css" class="text-blue-500" target="_blank">/css/tailwind.css</a>
+    </p>
+  </div>
   
   <div class="mt-10 text-center">
     <p class="text-xl text-gray-300 mb-6">Built ENTIRELY on GitHub.com - no local tools!</p>
