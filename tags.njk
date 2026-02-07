@@ -15,34 +15,44 @@ title: "Tag: {{ tag }}"
     <span class="text-gray-600">Tag:</span> {{ tag }}
   </h1>
   
-  {% set tagPosts = collections.posts | filterByTag(tag) %}
-  
-  {% if tagPosts and tagPosts.length > 0 %}
-    <p class="text-gray-600 mb-8">
-      {{ tagPosts.length }} experiment{{ tagPosts.length | pluralize }} tagged with "{{ tag }}"
-    </p>
+  {% if collections.posts %}
+    {% set tagPosts = [] %}
+    {% for post in collections.posts %}
+      {% if post.data.tags and tag in post.data.tags %}
+        {% set tagPosts = tagPosts | push(post) %}
+      {% endif %}
+    {% endfor %}
     
-    <div class="space-y-8">
-      {% for post in tagPosts %}
-      <article class="bg-white p-6 rounded-xl shadow">
-        <h2 class="text-2xl font-bold mb-3">
-          <a href="{{ post.url }}" class="text-purple-600 hover:text-pink-500">
-            {{ post.data.title }}
-          </a>
-        </h2>
-        <div class="text-gray-500 mb-4">{{ post.date | date: "%B %d, %Y" }}</div>
-        <div class="prose prose-lg">
-          {{ post.templateContent | safe }}
-        </div>
-        <div class="mt-6 pt-6 border-t">
-          <a href="{{ post.url }}" class="text-blue-500 font-bold hover:underline">
-            Read full post →
-          </a>
-        </div>
-      </article>
-      {% endfor %}
-    </div>
+    {% if tagPosts.length > 0 %}
+      <p class="text-gray-600 mb-8">
+        {{ tagPosts.length }} experiment{{ 's' if tagPosts.length != 1 }}
+        tagged with "{{ tag }}"
+      </p>
+      
+      <div class="space-y-8">
+        {% for post in tagPosts %}
+        <article class="bg-white p-6 rounded-xl shadow">
+          <h2 class="text-2xl font-bold mb-3">
+            <a href="{{ post.url }}" class="text-purple-600 hover:text-pink-500">
+              {{ post.data.title }}
+            </a>
+          </h2>
+          <div class="text-gray-500 mb-4">{{ post.date | date: "%B %d, %Y" }}</div>
+          <div class="prose prose-lg">
+            {{ post.templateContent | safe }}
+          </div>
+          <div class="mt-6 pt-6 border-t">
+            <a href="{{ post.url }}" class="text-blue-500 font-bold hover:underline">
+              Read full post →
+            </a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-gray-500 text-center py-12">No experiments found with this tag.</p>
+    {% endif %}
   {% else %}
-    <p class="text-gray-500 text-center py-12">No experiments found with this tag.</p>
+    <p class="text-gray-500 text-center py-12">No posts available.</p>
   {% endif %}
 </div>
