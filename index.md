@@ -50,10 +50,19 @@ layout: base.njk
   {% for post in collections.posts reversed %}
   <article class="gross-card">
     <header>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-        <small>📅 {{ post.date | date: "%B %d, %Y" }}</small>
-        <small>⏱️ ~{{ post.templateContent | size | divided_by: 200 | round }} min read</small>
+      <!-- DATE & READING TIME ROW - ADD THIS -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+        <div>
+          <span style="margin-right: 0.5rem;">📅</span>
+          <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %d, %Y" }}</time>
+        </div>
+        <div>
+          <span style="margin-right: 0.5rem;">⏱️</span>
+          <span>~{{ post.templateContent | size | divided_by: 200 | round }} min read</span>
+        </div>
       </div>
+      <!-- END DATE ROW -->
+      
       <hgroup>
         <h2 style="margin: 0;">
           <a href="{{ post.url }}">{{ post.data.title }}</a>
