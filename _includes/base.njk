@@ -4,19 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} | Gross Experiments</title>
-  <link rel="stylesheet" href="/css/tailwind.css">
+  
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.5.x/dist/typography.min.css" rel="stylesheet">
+  
+  <!-- Custom gross accent color -->
+  <style>
+    :root {
+      --gross-pink: #ff6b6b;
+      --gross-purple: #764ba2;
+      --gross-blue: #667eea;
+    }
+  </style>
 </head>
-<body>
-  <header>
-    <h1>Gross 144</h1>
+<body class="bg-gray-50">
+  <header class="bg-gradient-to-br from-blue-500 via-purple-600 to-pink-500 text-white p-8">
+    <div class="container mx-auto">
+      <h1 class="text-4xl font-bold">Gross 144</h1>
+      <p class="text-xl opacity-90">A tabloid for random texts & experiments</p>
+    </div>
   </header>
   
-  <main>
+  <main class="container mx-auto p-8">
     {{ content | safe }}
   </main>
   
-  <footer>
-    <p>Built with 11ty</p>
+  <footer class="border-t p-8 text-center text-gray-600">
+    <p>Built with 11ty + Tailwind • Deployed from GitHub</p>
   </footer>
 </body>
 </html>
