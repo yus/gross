@@ -1,6 +1,7 @@
 export default function(eleventyConfig) {
   // Copy CSS
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("img");
   
   // Collections
   eleventyConfig.addCollection("posts", function(collectionApi) {
