@@ -26,4 +26,4 @@ layout: base.liquid
 
 <p>Click any tag to see all posts with that tag.</p>
 
-<a href="/" role="button">← Back to Home</a>
+<a href="/gross/">← Back to Home</a>
