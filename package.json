@@ -1,6 +1,7 @@
 {
   "name": "gross",
   "version": "1.0.0a",
+  "type": "module",
   "scripts": {
     "build:css": "tailwindcss -i css/tailwind.css -o _site/css/tailwind.css --minify",
     "build:eleventy": "eleventy",
