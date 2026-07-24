@@ -1,7 +1,7 @@
 ---
 title: "The Meadow Chess Game – A Dialogue"
 date: 2026-07-24
-tags: [chess, poetry, dialogue, gross]
+tags: [posts, chess, poetry, dialogue, gross]
 layout: base.liquid
 ---
 
