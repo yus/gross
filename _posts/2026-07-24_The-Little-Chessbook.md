@@ -5,6 +5,12 @@ tags: [posts, chess, poetry, dialogue, gross]
 layout: base.liquid
 ---
 
+
+#The Meadow Chess Game – A Dialogue
+
+
+
+
 *A game played across 32 moves, a meadow, and a thousand-year-old bishop.*
 -  -  -  -  -  
 
