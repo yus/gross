@@ -2,12 +2,11 @@
 title: "The Meadow Chess Game – A Dialogue"
 date: 2026-07-24
 tags: [chess, poetry, dialogue, gross]
-layout: post
+layout: base.liquid
 ---
 
 *A game played across 32 moves, a meadow, and a thousand-year-old bishop.*
-
----
+-  -  -  -  -  
 
 **Instant**
 
